@@ -23,10 +23,17 @@ app.get("/", function(req, res){
 });
 var io = require('socket.io').listen(app.listen(port));
 io.sockets.on('connection', function (socket) {
-    socket.emit('message', { message: 'welcome to the chat' });
+	//console.log("**********" + io.sockets.clients().length)
+    socket.emit('message', { message: 'welcome to the chat'});
+    
+    io.sockets.emit('count', {count: io.sockets.clients().length});
+    socket.on('disconnect', function () {
+    io.sockets.emit('count', {count: io.sockets.clients().length});
+  	});
     socket.on('send', function (data) {
     	console.log(data);
         io.sockets.emit('message', data);
     });
 });
-console.log("server runing on port " + app.get('port'));
+
+console.log("server runing on port " + port);

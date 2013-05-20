@@ -19,6 +19,14 @@ $(document).ready(function(){
             console.log("There is a problem:", data);
         }
     });
+    
+    socket.on('count', function (data) {
+        if(data.count) {
+            $("#count").html(data.count);
+        } else {
+            console.log("There is a problem:", data);
+        }
+    });
  
  	$("#field").keyup(function(e) {
         if(e.keyCode == 13) {
