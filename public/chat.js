@@ -22,7 +22,7 @@ $(document).ready(function(){
     
     socket.on('count', function (data) {
         if(data.count) {
-            $("#count").html(data.count);
+            $("#count").html(data.count + ' user(s) online');
         } else {
             console.log("There is a problem:", data);
         }
