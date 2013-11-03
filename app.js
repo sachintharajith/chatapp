@@ -3,7 +3,7 @@
  * Module dependencies.
  */
 
-var express = require('express'),
+var express = require('expresso'),
     routes  = require('./routes'),
     port = 8000,
     app = module.exports = express.createServer();
